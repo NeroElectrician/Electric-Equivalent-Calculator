@@ -1,0 +1,71 @@
+def r_series(elements):
+    return sum(elements)
+def r_parallel(elements):
+    return 1/sum(1/r for r in elements)
+def l_series(elements):
+    return sum(elements)
+def l_parallel(elements):
+    return 1/sum(1/r for r in elements)
+def c_series(elements):
+    return 1/sum(1/r for r in elements)
+def c_parallel(elements):
+    return sum(elements)
+#Programing
+def main():
+    print ("Welcome to Equivalent Calculator for electrical circuits!")
+    print (" ")
+    print ("Program will help you calculate the equivalent value of resistance, inductance or capacitance.")
+    print (" ")
+    con = input("How elements are connented, parallel (p) or in series (s)?  ").lower()
+    print (" ")
+    element = input("What would you like to calculate? Resistance (R), Inductance (L) or Capacitance (C)?  ").lower()
+    print (" ")
+    elements = []
+    n = int(input("How many elements there are?  "))
+    print (" ")
+    if element == "r" or element == "resistance":
+        if con == "p" or con == "parallel":
+            for i in range(n):
+                value = float(input(f"Enter value of element {i+1}: "))
+                elements.append(value)
+            result = r_parallel(elements)
+        elif con == 's' or con == 'series':
+            for i in range(n):
+                value = float(input(f"Enter value of element {i+1}: "))
+                elements.append(value)
+            result = r_series(elements)
+        else:
+            print ('Something went wrong :(')
+        print(f"The total resistance is: {result}Ω")
+    elif element == "l" or element == "inductance":
+        if con == "p" or con == "parallel":
+            for i in range(n):
+                value = float(input(f"Enter value of element {i+1}: "))
+                elements.append(value)
+            result = l_parallel(elements)
+        elif con == 's' or con == 'series':
+            for i in range(n):
+                value = float(input(f"Enter value of element {i+1}: "))
+                elements.append(value)
+            result = l_series(elements)
+        else:
+            print ('Something went wrong :(')
+        print(f"The total inductance is: {result}Ω")
+    elif element == "c" or element == "capacitance":
+        if con == "p" or con == "parallel":
+            for i in range(n):
+                value = float(input(f"Enter value of element {i+1}: "))
+                elements.append(value)
+            result = c_parallel(elements)
+        elif con == 's' or con == 'series':
+            for i in range(n):
+                value = float(input(f"Enter value of element {i+1}: "))
+                elements.append(value)
+            result = c_series(elements)
+        else:
+            print ('Something went wrong :(')
+        print(f"The total capacitance is: {result}Ω")
+    else:
+        print("Element chosen incorrectly")
+
+main()
